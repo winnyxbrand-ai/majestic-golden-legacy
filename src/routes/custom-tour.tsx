@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Send } from "lucide-react";
-import camp from "@/assets/camp.jpg";
+import campAsset from "@/assets/camp.jpg.asset.json";
+const camp = campAsset.url;
 import { SITE } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
 
