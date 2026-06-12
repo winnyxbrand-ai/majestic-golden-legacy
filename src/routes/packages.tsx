@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
-import hero from "@/assets/hero-jaisalmer.jpg";
+import heroAsset from "@/assets/hero-jaisalmer.jpg.asset.json";
+const hero = heroAsset.url;
 import { PACKAGES, ADDITIONAL_TOURS } from "@/lib/packages";
 import { SITE } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
