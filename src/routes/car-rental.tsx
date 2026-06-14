@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Car } from "lucide-react";
-import safariAsset from "@/assets/safari.jpg.asset.json";
-const safari = safariAsset.url;
-import { CARS } from "@/lib/packages";
+import { Car, Users } from "lucide-react";
+import safari from "@/assets/safari.jpg";
+import { FLEET_GROUPS } from "@/lib/packages";
 import { SITE } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -12,7 +11,7 @@ export const Route = createFileRoute("/car-rental")({
   head: () => ({
     meta: [
       { title: "Car Rental — Majestic Roams" },
-      { name: "description", content: "Chauffeured car rentals in Jaisalmer — Sedan, Innova, Scorpio, Tempo Traveler and luxury coaches." },
+      { name: "description", content: "Chauffeured car rentals in Jaisalmer — Sedan, Innova, Scorpio, Tempo Traveler and luxury coaches. Rates on WhatsApp." },
       { property: "og:title", content: "Car Rental — Majestic Roams" },
       { property: "og:description", content: "Chauffeured car rentals across Jaisalmer and Rajasthan." },
     ],
@@ -21,67 +20,127 @@ export const Route = createFileRoute("/car-rental")({
 });
 
 function CarRental() {
+  const enquireHref = (vehicle: string) =>
+    `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(
+      `Hello Majestic Roams, I'd like to enquire about renting a ${vehicle}. Please share the latest rates.`,
+    )}`;
+
   return (
     <>
       <PageHero image={safari} eyebrow="Private Chauffeured Travel" title="Car Rental">
         From elegant sedans to spacious coaches — all journeys begin in comfort.
       </PageHero>
 
+      {/* CHOOSE YOUR CARRIAGE — quick overview */}
       <section className="py-24 px-6">
         <div className="mx-auto max-w-6xl">
-          <SectionHeader eyebrow="Our Fleet" title="Choose your carriage." align="center" />
+          <SectionHeader
+            eyebrow="Our Fleet"
+            title="Choose your carriage."
+            subtitle="All vehicles are tourist-permit cars driven by experienced local chauffeurs. Rates vary by season, route and minimum kilometres — please enquire on WhatsApp for the latest quote."
+            align="center"
+          />
 
-          <div className="mt-14 gold-border overflow-hidden">
-            <table className="w-full text-left">
-              <thead className="bg-card">
-                <tr className="text-gold uppercase tracking-[0.2em] text-[0.7rem]">
-                  <th className="p-5">Vehicle</th>
-                  <th className="p-5 hidden sm:table-cell">Seating</th>
-                  <th className="p-5">Rate</th>
-                  <th className="p-5 text-right">Reserve</th>
-                </tr>
-              </thead>
-              <tbody>
-                {CARS.map((c, i) => (
-                  <motion.tr
-                    key={c.name}
-                    initial={{ opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.05 }}
-                    className="border-t border-gold/20"
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {FLEET_GROUPS.flatMap((g) => g.vehicles).map((v, i) => (
+              <motion.div
+                key={v.name}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: i * 0.05 }}
+                className="gold-border p-6 bg-card/70 flex items-start gap-4"
+              >
+                <Car className="size-5 text-gold mt-1 shrink-0" />
+                <div className="flex-1">
+                  <p className="font-serif text-cream text-lg leading-snug">{v.name}</p>
+                  <p className="mt-1 text-[0.7rem] uppercase tracking-[0.22em] text-gold/80 flex items-center gap-2">
+                    <Users className="size-3" /> {v.seats}
+                  </p>
+                  <a
+                    href={enquireHref(v.name)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-4 inline-block text-[0.7rem] uppercase tracking-[0.25em] text-gold hover:underline"
                   >
-                    <td className="p-5">
-                      <div className="flex items-center gap-3">
-                        <Car className="size-4 text-gold" />
-                        <span className="font-serif text-cream">{c.name}</span>
-                      </div>
-                    </td>
-                    <td className="p-5 hidden sm:table-cell text-cream/70 text-sm">{c.seats}</td>
-                    <td className="p-5 text-gold text-sm">{c.rate}</td>
-                    <td className="p-5 text-right">
-                      <a
-                        href={`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(`Hello Majestic Roams, I'd like to enquire about renting a ${c.name}.`)}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-[0.7rem] uppercase tracking-[0.25em] text-gold hover:underline"
-                      >
-                        Enquire
-                      </a>
-                    </td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
+                    Enquire on WhatsApp →
+                  </a>
+                </div>
+              </motion.div>
+            ))}
           </div>
-          <p className="mt-6 text-xs text-cream/55 italic">
-            * Rates are indicative and subject to season, route and minimum kilometre policy. Driver bata, parking and toll are additional unless specified.
+
+          <p className="mt-6 text-xs text-cream/55 italic text-center">
+            * Driver bata, parking and toll are additional unless specified. Rates discussed on WhatsApp.
           </p>
         </div>
       </section>
 
-      {/* REFUND POLICY */}
+      {/* DETAILED FLEET — grouped by category */}
       <section className="py-24 px-6 bg-card">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeader
+            eyebrow="Detailed Fleet"
+            title="Cars & coaches, in detail."
+            subtitle="Whether you're travelling solo, with family, or as a large group — there is a vehicle in our fleet composed for the occasion."
+            align="center"
+          />
+
+          <div className="mt-16 space-y-20">
+            {FLEET_GROUPS.map((group, gi) => (
+              <motion.div
+                key={group.category}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                  <div>
+                    <p className="eyebrow">Category 0{gi + 1}</p>
+                    <h3 className="mt-2 font-serif text-2xl md:text-3xl text-cream">{group.category}</h3>
+                  </div>
+                  <div className="md:max-w-md md:text-right">
+                    <p className="text-sm text-cream/75 leading-relaxed">{group.intro}</p>
+                  </div>
+                </div>
+                <div className="mt-4 h-px w-full bg-gold/30" />
+
+                <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {group.vehicles.map((v, i) => (
+                    <motion.div
+                      key={v.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.08 }}
+                      className="gold-border bg-ink/40 p-7 flex flex-col hover:bg-ink/60 transition-colors"
+                    >
+                      <Car className="size-6 text-gold" />
+                      <h4 className="mt-5 font-serif text-xl text-cream">{v.name}</h4>
+                      <p className="mt-2 text-[0.7rem] uppercase tracking-[0.25em] text-gold/80 flex items-center gap-2">
+                        <Users className="size-3" /> Seating {v.seats}
+                      </p>
+                      <p className="mt-4 text-sm text-cream/70 leading-relaxed flex-1">{v.note}</p>
+                      <a
+                        href={enquireHref(v.name)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-6 btn-ghost-gold w-full"
+                      >
+                        Enquire on WhatsApp
+                      </a>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* REFUND POLICY */}
+      <section className="py-24 px-6">
         <div className="mx-auto max-w-4xl">
           <SectionHeader
             eyebrow="Policy"
@@ -90,14 +149,14 @@ function CarRental() {
           />
 
           <div className="mt-12 space-y-8">
-            <div className="gold-border p-7 bg-ink/40">
+            <div className="gold-border p-7 bg-card/60">
               <h3 className="font-serif text-xl text-gold">Payment</h3>
               <p className="mt-3 text-sm text-cream/80 leading-relaxed">
                 For all services contracted, full payment shall be made in advance via one of the accepted methods. All prices are quoted in Indian Rupees and are exclusive of taxes.
               </p>
             </div>
 
-            <div className="gold-border p-7 bg-ink/40">
+            <div className="gold-border p-7 bg-card/60">
               <h3 className="font-serif text-xl text-gold">Cancellation Charges</h3>
               <p className="mt-3 text-sm text-cream/80 leading-relaxed">
                 In the event of cancellation by the User / Client, we must be notified immediately in writing. Cancellation charges are effective from the date written notice is received, and apply as follows:
@@ -122,7 +181,7 @@ function CarRental() {
               </ol>
             </div>
 
-            <div className="gold-border p-7 bg-ink/40">
+            <div className="gold-border p-7 bg-card/60">
               <h3 className="font-serif text-xl text-gold">Trips After Commencement</h3>
               <p className="mt-3 text-sm text-cream/80 leading-relaxed">
                 If you cancel any trip after commencement, refund for the unused portion will be solely at the discretion of Majestic Roams. Refunds, where applicable, are processed within a reasonable timeframe after deducting the respective cancellation fee.

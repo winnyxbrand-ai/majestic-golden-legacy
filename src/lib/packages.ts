@@ -1,12 +1,7 @@
-import campAsset from "@/assets/camp.jpg.asset.json";
-import safariAsset from "@/assets/safari.jpg.asset.json";
-import haveliAsset from "@/assets/haveli.jpg.asset.json";
-import culturalAsset from "@/assets/cultural.jpg.asset.json";
-
-const camp = campAsset.url;
-const safari = safariAsset.url;
-const haveli = haveliAsset.url;
-const cultural = culturalAsset.url;
+import camp from "@/assets/camp.jpg";
+import safari from "@/assets/safari.jpg";
+import haveli from "@/assets/haveli.jpg";
+import cultural from "@/assets/cultural.jpg";
 
 export type Pkg = {
   slug: string;
@@ -137,11 +132,49 @@ export const ADDITIONAL_TOURS = [
 ];
 
 export const CARS = [
-  { name: "Sedan (Dzire / Etios)", seats: "4 + 1", rate: "₹ 12 / km" },
-  { name: "Toyota Innova", seats: "6 + 1", rate: "₹ 18 / km" },
-  { name: "Innova Crysta", seats: "6 + 1", rate: "₹ 22 / km" },
-  { name: "Mahindra Scorpio", seats: "6 + 1", rate: "₹ 18 / km" },
-  { name: "Tempo Traveler (12 Seater)", seats: "11 + 1", rate: "₹ 26 / km" },
-  { name: "Tempo Traveler (17 Seater)", seats: "16 + 1", rate: "₹ 32 / km" },
-  { name: "Luxury Coach (27 Seater)", seats: "27", rate: "On request" },
+  { name: "Sedan (Dzire / Etios)", seats: "4 + 1" },
+  { name: "Toyota Innova", seats: "6 + 1" },
+  { name: "Innova Crysta", seats: "6 + 1" },
+  { name: "Mahindra Scorpio", seats: "6 + 1" },
+  { name: "Tempo Traveler (12 Seater)", seats: "11 + 1" },
+  { name: "Tempo Traveler (17 Seater)", seats: "16 + 1" },
+  { name: "Luxury Coach (27 Seater)", seats: "27" },
+];
+
+export type FleetGroup = {
+  category: string;
+  intro: string;
+  vehicles: { name: string; seats: string; note: string }[];
+};
+
+export const FLEET_GROUPS: FleetGroup[] = [
+  {
+    category: "Economy & Comfort",
+    intro:
+      "Reliable, well-maintained sedans for solo travellers, couples and small families — perfect for city sightseeing and shorter outstation journeys across Rajasthan.",
+    vehicles: [
+      { name: "Sedan — Swift Dzire", seats: "4 + 1", note: "Comfortable AC sedan for couples and small families." },
+      { name: "Sedan — Toyota Etios", seats: "4 + 1", note: "Spacious boot — ideal for airport pickups and city tours." },
+    ],
+  },
+  {
+    category: "Premium SUV & MUV",
+    intro:
+      "Roomier, higher-clearance vehicles for families, longer desert routes and group sightseeing — driven by experienced local chauffeurs who know every lane of the Thar.",
+    vehicles: [
+      { name: "Toyota Innova", seats: "6 + 1", note: "The workhorse of Rajasthan tours — comfortable for 4–6 guests." },
+      { name: "Innova Crysta", seats: "6 + 1", note: "Premium captain seats, perfect for luxury family journeys." },
+      { name: "Mahindra Scorpio", seats: "6 + 1", note: "Rugged SUV best suited for desert and border-area routes." },
+    ],
+  },
+  {
+    category: "Group Coaches & Tempo Travelers",
+    intro:
+      "Spacious group vehicles for weddings, corporate retreats, school trips and large family pilgrimages — every coach is air-conditioned with a dedicated driver.",
+    vehicles: [
+      { name: "Tempo Traveler (12 Seater)", seats: "11 + 1", note: "Push-back seats, AC — comfortable for small groups." },
+      { name: "Tempo Traveler (17 Seater)", seats: "16 + 1", note: "Extra luggage space, ideal for multi-day Rajasthan circuits." },
+      { name: "Luxury Coach (27 Seater)", seats: "27", note: "Premium AC coach for corporate, wedding and large group travel." },
+    ],
+  },
 ];

@@ -14,6 +14,7 @@ import { Route as PackagesRouteImport } from './routes/packages'
 import { Route as CustomTourRouteImport } from './routes/custom-tour'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CarRentalRouteImport } from './routes/car-rental'
+import { Route as AttractionsRouteImport } from './routes/attractions'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -41,6 +42,11 @@ const CarRentalRoute = CarRentalRouteImport.update({
   path: '/car-rental',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AttractionsRoute = AttractionsRouteImport.update({
+  id: '/attractions',
+  path: '/attractions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -49,6 +55,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/attractions': typeof AttractionsRoute
   '/car-rental': typeof CarRentalRoute
   '/contact': typeof ContactRoute
   '/custom-tour': typeof CustomTourRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/attractions': typeof AttractionsRoute
   '/car-rental': typeof CarRentalRoute
   '/contact': typeof ContactRoute
   '/custom-tour': typeof CustomTourRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/attractions': typeof AttractionsRoute
   '/car-rental': typeof CarRentalRoute
   '/contact': typeof ContactRoute
   '/custom-tour': typeof CustomTourRoute
@@ -76,6 +85,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/attractions'
     | '/car-rental'
     | '/contact'
     | '/custom-tour'
@@ -84,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/attractions'
     | '/car-rental'
     | '/contact'
     | '/custom-tour'
@@ -92,6 +103,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/attractions'
     | '/car-rental'
     | '/contact'
     | '/custom-tour'
@@ -101,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AttractionsRoute: typeof AttractionsRoute
   CarRentalRoute: typeof CarRentalRoute
   ContactRoute: typeof ContactRoute
   CustomTourRoute: typeof CustomTourRoute
@@ -145,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CarRentalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/attractions': {
+      id: '/attractions'
+      path: '/attractions'
+      fullPath: '/attractions'
+      preLoaderRoute: typeof AttractionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -157,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AttractionsRoute: AttractionsRoute,
   CarRentalRoute: CarRentalRoute,
   ContactRoute: ContactRoute,
   CustomTourRoute: CustomTourRoute,
