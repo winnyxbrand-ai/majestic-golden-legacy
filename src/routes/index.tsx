@@ -1,14 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Compass, Hotel, Car, Sparkles } from "lucide-react";
-import hero from "@/assets/hero-jaisalmer.jpg";
-import camp from "@/assets/camp.jpg";
-import safari from "@/assets/safari.jpg";
-import haveli from "@/assets/haveli.jpg";
-import cultural from "@/assets/cultural.jpg";
+import heroAsset from "@/assets/hero-jaisalmer.jpg.asset.json";
+import campAsset from "@/assets/camp.jpg.asset.json";
+import safariAsset from "@/assets/safari.jpg.asset.json";
+import haveliAsset from "@/assets/haveli.jpg.asset.json";
+import culturalAsset from "@/assets/cultural.jpg.asset.json";
 import { SITE } from "@/lib/site";
 import { PACKAGES } from "@/lib/packages";
 import { SectionHeader } from "@/components/site/SectionHeader";
+
+const hero = heroAsset.url;
+const camp = campAsset.url;
+const safari = safariAsset.url;
+const haveli = haveliAsset.url;
+const cultural = culturalAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({

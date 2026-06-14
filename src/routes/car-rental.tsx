@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Car, Users } from "lucide-react";
-import safari from "@/assets/safari.jpg";
+import safariAsset from "@/assets/safari.jpg.asset.json";
 import { FLEET_GROUPS } from "@/lib/packages";
 import { SITE } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeader } from "@/components/site/SectionHeader";
+
+const safari = safariAsset.url;
 
 export const Route = createFileRoute("/car-rental")({
   head: () => ({

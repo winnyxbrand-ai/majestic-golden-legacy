@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
-import haveli from "@/assets/haveli.jpg";
+import haveliAsset from "@/assets/haveli.jpg.asset.json";
 import { SITE } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeader } from "@/components/site/SectionHeader";
+
+const haveli = haveliAsset.url;
 
 export const Route = createFileRoute("/attractions")({
   head: () => ({
