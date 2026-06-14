@@ -116,22 +116,34 @@ function CarRental() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: i * 0.08 }}
-                      className="gold-border bg-ink/40 p-7 flex flex-col hover:bg-ink/60 transition-colors"
+                      className="gold-border bg-ink/40 flex flex-col overflow-hidden hover:bg-ink/60 transition-colors"
                     >
-                      <Car className="size-6 text-gold" />
-                      <h4 className="mt-5 font-serif text-xl text-cream">{v.name}</h4>
-                      <p className="mt-2 text-[0.7rem] uppercase tracking-[0.25em] text-gold/80 flex items-center gap-2">
-                        <Users className="size-3" /> Seating {v.seats}
-                      </p>
-                      <p className="mt-4 text-sm text-cream/70 leading-relaxed flex-1">{v.note}</p>
-                      <a
-                        href={enquireHref(v.name)}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-6 btn-ghost-gold w-full"
-                      >
-                        Enquire on WhatsApp
-                      </a>
+                      <div className="relative aspect-[4/3] bg-cream/5 overflow-hidden">
+                        <img
+                          src={v.image}
+                          alt={v.name}
+                          loading="lazy"
+                          width={1024}
+                          height={768}
+                          className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-[1200ms] hover:scale-105"
+                        />
+                      </div>
+                      <div className="p-7 flex flex-col flex-1">
+                        <Car className="size-6 text-gold" />
+                        <h4 className="mt-5 font-serif text-xl text-cream">{v.name}</h4>
+                        <p className="mt-2 text-[0.7rem] uppercase tracking-[0.25em] text-gold/80 flex items-center gap-2">
+                          <Users className="size-3" /> Seating {v.seats}
+                        </p>
+                        <p className="mt-4 text-sm text-cream/70 leading-relaxed flex-1">{v.note}</p>
+                        <a
+                          href={enquireHref(v.name)}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mt-6 btn-ghost-gold w-full"
+                        >
+                          Enquire on WhatsApp
+                        </a>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
