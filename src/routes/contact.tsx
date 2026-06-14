@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
-import haveli from "@/assets/haveli.jpg";
+import haveliAsset from "@/assets/haveli.jpg.asset.json";
 import { SITE } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
+
+const haveli = haveliAsset.url;
 
 export const Route = createFileRoute("/contact")({
   head: () => ({

@@ -1,7 +1,12 @@
-import camp from "@/assets/camp.jpg";
-import safari from "@/assets/safari.jpg";
-import haveli from "@/assets/haveli.jpg";
-import cultural from "@/assets/cultural.jpg";
+import campAsset from "@/assets/camp.jpg.asset.json";
+import safariAsset from "@/assets/safari.jpg.asset.json";
+import haveliAsset from "@/assets/haveli.jpg.asset.json";
+import culturalAsset from "@/assets/cultural.jpg.asset.json";
+
+const camp = campAsset.url;
+const safari = safariAsset.url;
+const haveli = haveliAsset.url;
+const cultural = culturalAsset.url;
 
 export type Pkg = {
   slug: string;
