@@ -2,11 +2,24 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 import haveliAsset from "@/assets/haveli.jpg.asset.json";
+import att01 from "@/assets/attractions/att-01.jpg.asset.json";
+import att02 from "@/assets/attractions/att-02.jpg.asset.json";
+import att03 from "@/assets/attractions/att-03.jpg.asset.json";
+import att04 from "@/assets/attractions/att-04.jpg.asset.json";
+import att05 from "@/assets/attractions/att-05.jpg.asset.json";
+import att06 from "@/assets/attractions/att-06.jpg.asset.json";
+import att07 from "@/assets/attractions/att-07.jpg.asset.json";
+import att08 from "@/assets/attractions/att-08.jpg.asset.json";
+import att09 from "@/assets/attractions/att-09.jpg.asset.json";
+import att10 from "@/assets/attractions/att-10.jpg.asset.json";
+import att11 from "@/assets/attractions/att-11.jpg.asset.json";
+import att12 from "@/assets/attractions/att-12.jpg.asset.json";
 import { SITE } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeader } from "@/components/site/SectionHeader";
 
 const haveli = haveliAsset.url;
+const ATT_IMAGES = [att01, att02, att03, att04, att05, att06, att07, att08, att09, att10, att11, att12].map((a) => a.url);
 
 export const Route = createFileRoute("/attractions")({
   head: () => ({
@@ -111,28 +124,41 @@ function Attractions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, delay: (i % 2) * 0.1 }}
-              className="gold-border bg-card/70 p-8 flex flex-col hover:bg-card transition-colors"
+              className="gold-border bg-card/70 flex flex-col overflow-hidden hover:bg-card transition-colors"
             >
-              <div className="flex items-center gap-4">
-                <span className="font-serif text-gold text-sm tracking-[0.3em]">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="h-px flex-1 bg-gold/40" />
-                <MapPin className="size-4 text-gold" />
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={ATT_IMAGES[i]}
+                  alt={a.name}
+                  loading="lazy"
+                  width={1024}
+                  height={768}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
               </div>
-              <h3 className="mt-5 font-serif text-2xl text-cream leading-snug">{a.name}</h3>
-              <div className="mt-4 h-px w-12 bg-gold" />
-              <p className="mt-5 text-sm text-cream/75 leading-relaxed flex-1">{a.description}</p>
-              <a
-                href={`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(
-                  `Hello Majestic Roams, I'd like to include ${a.name} in my Jaisalmer itinerary.`,
-                )}`}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-7 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.28em] text-gold hover:gap-3 transition-all"
-              >
-                Include in my tour →
-              </a>
+              <div className="p-8 flex flex-col flex-1">
+                <div className="flex items-center gap-4">
+                  <span className="font-serif text-gold text-sm tracking-[0.3em]">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="h-px flex-1 bg-gold/40" />
+                  <MapPin className="size-4 text-gold" />
+                </div>
+                <h3 className="mt-5 font-serif text-2xl text-cream leading-snug">{a.name}</h3>
+                <div className="mt-4 h-px w-12 bg-gold" />
+                <p className="mt-5 text-sm text-cream/75 leading-relaxed flex-1">{a.description}</p>
+                <a
+                  href={`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(
+                    `Hello Majestic Roams, I'd like to include ${a.name} in my Jaisalmer itinerary.`,
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-7 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.28em] text-gold hover:gap-3 transition-all"
+                >
+                  Include in my tour →
+                </a>
+              </div>
             </motion.article>
           ))}
         </div>
