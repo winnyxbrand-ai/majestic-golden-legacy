@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Check, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Check, X, ChevronDown } from "lucide-react";
+import { useState } from "react";
 import heroAsset from "@/assets/hero-jaisalmer.jpg.asset.json";
 import { PACKAGES, ADDITIONAL_TOURS } from "@/lib/packages";
 import { SITE } from "@/lib/site";
