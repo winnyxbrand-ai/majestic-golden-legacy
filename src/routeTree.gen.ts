@@ -33,11 +33,6 @@ const FestivalsRoute = FestivalsRouteImport.update({
   path: '/festivals',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FestivalsRoute = FestivalsRouteImport.update({
-  id: '/festivals',
-  path: '/festivals',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CustomTourRoute = CustomTourRouteImport.update({
   id: '/custom-tour',
   path: '/custom-tour',
