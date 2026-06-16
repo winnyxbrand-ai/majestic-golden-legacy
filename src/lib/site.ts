@@ -10,6 +10,7 @@ export const SITE = {
 export const NAV = [
   { to: "/", label: "Home" },
   { to: "/packages", label: "Packages" },
+  { to: "/festivals", label: "Festivals" },
   { to: "/attractions", label: "Attractions" },
   { to: "/car-rental", label: "Car Rental" },
   { to: "/custom-tour", label: "Custom Tour" },
