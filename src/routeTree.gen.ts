@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PackagesRouteImport } from './routes/packages'
+import { Route as FestivalsRouteImport } from './routes/festivals'
 import { Route as CustomTourRouteImport } from './routes/custom-tour'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CarRentalRouteImport } from './routes/car-rental'
@@ -25,6 +26,16 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const PackagesRoute = PackagesRouteImport.update({
   id: '/packages',
   path: '/packages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FestivalsRoute = FestivalsRouteImport.update({
+  id: '/festivals',
+  path: '/festivals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FestivalsRoute = FestivalsRouteImport.update({
+  id: '/festivals',
+  path: '/festivals',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CustomTourRoute = CustomTourRouteImport.update({
@@ -59,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/car-rental': typeof CarRentalRoute
   '/contact': typeof ContactRoute
   '/custom-tour': typeof CustomTourRoute
+  '/festivals': typeof FestivalsRoute
   '/packages': typeof PackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -68,6 +80,7 @@ export interface FileRoutesByTo {
   '/car-rental': typeof CarRentalRoute
   '/contact': typeof ContactRoute
   '/custom-tour': typeof CustomTourRoute
+  '/festivals': typeof FestivalsRoute
   '/packages': typeof PackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -78,6 +91,7 @@ export interface FileRoutesById {
   '/car-rental': typeof CarRentalRoute
   '/contact': typeof ContactRoute
   '/custom-tour': typeof CustomTourRoute
+  '/festivals': typeof FestivalsRoute
   '/packages': typeof PackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -89,6 +103,7 @@ export interface FileRouteTypes {
     | '/car-rental'
     | '/contact'
     | '/custom-tour'
+    | '/festivals'
     | '/packages'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +113,7 @@ export interface FileRouteTypes {
     | '/car-rental'
     | '/contact'
     | '/custom-tour'
+    | '/festivals'
     | '/packages'
     | '/sitemap.xml'
   id:
@@ -107,6 +123,7 @@ export interface FileRouteTypes {
     | '/car-rental'
     | '/contact'
     | '/custom-tour'
+    | '/festivals'
     | '/packages'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
@@ -117,6 +134,7 @@ export interface RootRouteChildren {
   CarRentalRoute: typeof CarRentalRoute
   ContactRoute: typeof ContactRoute
   CustomTourRoute: typeof CustomTourRoute
+  FestivalsRoute: typeof FestivalsRoute
   PackagesRoute: typeof PackagesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -135,6 +153,13 @@ declare module '@tanstack/react-router' {
       path: '/packages'
       fullPath: '/packages'
       preLoaderRoute: typeof PackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/festivals': {
+      id: '/festivals'
+      path: '/festivals'
+      fullPath: '/festivals'
+      preLoaderRoute: typeof FestivalsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/custom-tour': {
@@ -181,6 +206,7 @@ const rootRouteChildren: RootRouteChildren = {
   CarRentalRoute: CarRentalRoute,
   ContactRoute: ContactRoute,
   CustomTourRoute: CustomTourRoute,
+  FestivalsRoute: FestivalsRoute,
   PackagesRoute: PackagesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
