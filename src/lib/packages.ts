@@ -108,31 +108,208 @@ export const PACKAGES: Pkg[] = [
   },
 ];
 
-export const ADDITIONAL_TOURS = [
+export type AdditionalTour = {
+  name: string;
+  duration: string;
+  image: string;
+  blurb: string;
+  note?: string;
+  highlights: string[];
+  about: string;
+  inclusions: string[];
+  exclusions: string[];
+  itinerary: { title: string; details: string }[];
+};
+
+export const ADDITIONAL_TOURS: AdditionalTour[] = [
   {
     name: "Majestic Half Day Tour",
+    duration: "Half Day · Jaisalmer",
     image: haveli,
     blurb: "A graceful half-day through Jaisalmer's heritage core.",
+    note: "Requires a minimum of 2 people. If 1 extra after 2 people, an additional 30% charge applies.",
+    highlights: [
+      "Visit monuments and villages",
+      "Kuldhara Village",
+      "Camel ride",
+      "Sunset in the dunes",
+      "Cultural program",
+      "Dinner with bonfire",
+      "Dancing and singing",
+    ],
+    about:
+      "One of the most popular outdoor experiences in Jaisalmer is a tour of the sand dunes by camel. Majestic Roams offers a Half-Day Tour for travellers seeking an exciting Jaisalmer desert experience — centred around the Thar, with desert camping, cultural moments, dune drives and sightseeing.",
+    inclusions: [
+      "Transport facility",
+      "Camel ride to the sand dunes",
+      "Pickup & drop service to the city",
+      "Campfire with folk music & dance",
+      "Rajasthani buffet dinner",
+    ],
+    exclusions: [
+      "Alcoholic drinks",
+      "Personal expenses",
+      "Travel insurance",
+      "Peak-season surcharges",
+      "Monument entrance fees",
+      "Any increase in government or state taxes",
+    ],
+    itinerary: [
+      {
+        title: "Jaisalmer",
+        details:
+          "Begin at 2:00 PM with a drive into the desert, stopping at beautiful monuments and villages including the abandoned Kuldhara. Enjoy a 90-minute camel ride and the iconic Thar sunset, followed by a candle-lit dinner under a sky of stars. Return to the city by jeep at 9:00 PM — an unforgettable evening.",
+      },
+    ],
   },
   {
     name: "Majestic Luxury Overnight Safari",
+    duration: "1 Night / 2 Days · Jaisalmer",
     image: camp,
     blurb: "Royal tented night amid the dunes with private safari.",
+    note: "Requires a minimum of 2 people. If 1 extra after 2 people, an additional 30% charge applies.",
+    highlights: [
+      "Visit monuments",
+      "Traditional Rajasthani welcome",
+      "Camel ride",
+      "Sunset in the dunes",
+      "Dinner with bonfire",
+      "Dancing and singing",
+      "Stargazing with camping",
+    ],
+    about:
+      "An overnight escape into the Thar — private transport, camel safari, cultural program, gala dinner and a night under canvas in a Swiss luxury tent. The perfect way to live Rajasthan's heritage without surrendering comfort.",
+    inclusions: [
+      "Transport facility",
+      "Camel ride to the sand dunes",
+      "Tea / coffee and snacks",
+      "Pickup & drop service to the city",
+      "Campfire & dinner",
+      "Morning breakfast",
+    ],
+    exclusions: [
+      "Alcoholic drinks",
+      "Personal expenses",
+      "Monument entry tickets",
+      "Travel insurance",
+      "Peak-season surcharges",
+      "Any increase in government or state taxes",
+    ],
+    itinerary: [
+      {
+        title: "Arrival",
+        details:
+          "From 2:00 PM until 11:00 AM the next day — car transport, monument visits, camel riding and sunset over the dunes. On arrival at camp, a traditional welcome with tilak and garland, hot drinks and snacks, a Rajasthani folk-music-and-dance program and a vegetarian gala dinner. Overnight in a Swiss luxury tent.",
+      },
+      { title: "Departure", details: "Leisurely breakfast at camp and checkout." },
+    ],
   },
   {
-    name: "Majestic 1.5 Hour Jeep Tour",
+    name: "Majestic 1.5 Hour Jeep Safari",
+    duration: "1.5 Hours · Jaisalmer",
     image: safari,
     blurb: "A quick exhilarating dune drive — perfect for sunset.",
+    note: "Maximum of 5 people per jeep.",
+    highlights: ["Jeep safari", "Camel safari", "Sunset view", "Sunrise view"],
+    about:
+      "Explore the Jaisalmer dunes on a 90-minute jeep safari with an experienced local guide — suitable for all ages and fitness levels. Witness the unique flora and fauna of the Thar and a sunset that lingers long after you've left.",
+    inclusions: ["Transport to camp", "Traditional welcome in camp", "Jeep safari on the dunes"],
+    exclusions: ["Alcoholic drinks", "Travel insurance", "Peak-season surcharges"],
+    itinerary: [
+      {
+        title: "Jeep Safari",
+        details:
+          "Arrive at our camp where the jeep safari begins. Within 90 minutes the jeep returns — with stops at the Sam Sunset Point and a short camel safari mid-tour. Optional add-ons: a Sunrise Safari or a Night (stargazing) Safari.",
+      },
+    ],
   },
   {
     name: "Majestic Sunset Cultural Show with Gala Dinner",
+    duration: "1 Day · Jaisalmer",
     image: cultural,
     blurb: "Folk performances, firelight and a Rajasthani gala.",
+    note: "Requires a minimum of 2 people. If 1 extra after 2 people, an additional 30% charge applies.",
+    highlights: [
+      "Visit monuments",
+      "Camel ride",
+      "Sunset in the dunes",
+      "Cultural program",
+      "Gala dinner with bonfire",
+      "Dancing and singing",
+    ],
+    about:
+      "A thrilling afternoon-to-evening sojourn featuring monument visits, camel riding, dune sunsets, a Rajasthani folk-music-and-dance program and a vegetarian gala dinner around the fire.",
+    inclusions: [
+      "Transport facility",
+      "Camel ride to the sand dunes",
+      "Pickup & drop service to the city",
+      "Campfire with folk music & dance",
+      "Rajasthani buffet dinner",
+    ],
+    exclusions: [
+      "Alcoholic drinks",
+      "Personal expenses",
+      "Travel insurance",
+      "Peak-season surcharges",
+      "Monument entrance fees",
+      "Any increase in government or state taxes",
+    ],
+    itinerary: [
+      {
+        title: "Jaisalmer",
+        details:
+          "From 2:00 PM to 10:30 PM — explore Jaisalmer's iconic monuments, then arrive at camp for camel riding, sunset over the dunes, welcome drinks, snacks and a Rajasthani cultural program. The evening closes with a pure-vegetarian gala dinner before the drive back to Jaisalmer.",
+      },
+    ],
   },
   {
-    name: "Majestic Jaisalmer Attractions",
+    name: "Majestic Royal Jaisalmer Package",
+    duration: "2 Nights / 3 Days · Jaisalmer",
     image: haveli,
-    blurb: "Curated city tour — Fort, Havelis, Gadisar and beyond.",
+    blurb: "Boutique hotel, dune camping, fort guide and a gala desert night.",
+    note: "Requires a minimum of 2 people. If 1 extra after 2 people, an additional 30% charge applies.",
+    highlights: [
+      "City guide",
+      "Visit monuments",
+      "Traditional welcome",
+      "Camel ride",
+      "Sunset in the dunes",
+      "Dinner with bonfire",
+      "Dancing and singing",
+      "Stargazing with camping",
+    ],
+    about:
+      "Three days of Jaisalmer at its most royal — boutique hotel comfort, a guided tour of the Golden Fort, Havelis, Gadisar Lake and Jain Temples, a camel safari into the dunes and a bonfire-lit gala under the desert sky.",
+    inclusions: [
+      "Transport facility",
+      "City guide",
+      "Camel ride to the sand dunes",
+      "Tea / coffee and snacks",
+      "Pickup & drop service to the city",
+      "Campfire & dinner",
+      "Morning breakfast",
+    ],
+    exclusions: [
+      "Alcoholic drinks",
+      "Personal expenses",
+      "Monument entry tickets",
+      "Travel insurance",
+      "Peak-season surcharges",
+      "Any increase in government or state taxes",
+    ],
+    itinerary: [
+      {
+        title: "Arrival",
+        details:
+          "On arrival, our representative meets you and transfers you to a boutique hotel in Jaisalmer for a comfortable overnight. The rest of the day is at leisure.",
+      },
+      {
+        title: "Jaisalmer Sightseeing & Desert Camping",
+        details:
+          "Guided tour of the Golden Fort, Havelis, Gadisar Lake and Jain Temples. In the afternoon, transfer to camp for a traditional welcome, camel safari, sunset over the dunes and a bonfire-lit gala with folk music, dance and dinner. Overnight under canvas.",
+      },
+      { title: "Departure", details: "Bed tea and breakfast at camp, then departure with memories of the Thar." },
+    ],
   },
 ];
 
