@@ -23,6 +23,7 @@ export const Route = createFileRoute("/packages")({
 });
 
 function Packages() {
+  const [openTour, setOpenTour] = useState<string | null>(null);
   return (
     <>
       <PageHero image={hero} eyebrow="Signature Sojourns" title="Tour Packages">
