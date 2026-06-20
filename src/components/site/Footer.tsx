@@ -25,6 +25,11 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link to="/about-us" className="text-cream/75 hover:text-gold text-sm">
+                About Us
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
